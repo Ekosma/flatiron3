@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'sessions#home'
   get '/signup' => 'users#new'
   #post 'signup' => 'users#create' (use built in submission instead)
   # custom routes above line
