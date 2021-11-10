@@ -12,5 +12,13 @@
 
   <body>
     <%= yield %>
+    <div>
+      <% if logged_in?%>
+      <%= link_to "logout", logout_path method: delete%>
+      <% else%>
+      <%= link_to "Sign Up Here" , signup_path%>
+      <%= link_to "Log In Here" , login_path%>
+      <%end%>
+    </div>
   </body>
 </html>
