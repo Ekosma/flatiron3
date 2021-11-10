@@ -1,0 +1,2 @@
+class StudentPeriodsController < ApplicationController
+end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :student_periods
   resources :students
   resources :periods
   resources :users
