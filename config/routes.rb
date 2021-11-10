@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
+  #inital page seen
   root 'sessions#home'
+  #sign_up 
   get '/signup' => 'users#new'
-  #post 'signup' => 'users#create' (use built in submission instead)
+  post 'signup' => 'users#create'
+
+  #login
+  get '/login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+
+  #logout
+  delete '/logout' => 'sessions#destroy'
   # custom routes above line
   resources :assignments
   resources :student_periods
