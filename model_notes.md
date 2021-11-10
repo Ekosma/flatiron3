@@ -20,7 +20,7 @@ Students
   - has_many :classes
   - student_name
 
-Students_Periods #Join Table
+StudentPeriods #Join Table
   - belongs_to :students
   - belongs_to :period
 
