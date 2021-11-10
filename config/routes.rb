@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :assignments
   resources :student_periods
   resources :students
-  resources :periods
-  resources :users
+  resources :periods do
+    resources :students
+  end
+  resources :users do
+    resources :periods
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
