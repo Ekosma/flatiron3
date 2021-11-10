@@ -1,8 +1,9 @@
 Grasses 2.0 
 
-User
+Users
   - has_many :periods
   - has_many :students, through :periods
+  - has_many :assignments, through :periods
   - username
   - email
   - password_digest
@@ -18,11 +19,15 @@ Students
   - has_many :assignments 
   - has_many :classes
   - student_name
-  - grade_average
+
+Students_Periods #Join Table
+  - belongs_to :students
+  - belongs_to :period
 
 Assignments
   - belongs_to :students
-  - belongs_to :Periods
+  - belongs_to :periods
   - assignment_name
   - grade
+
 
