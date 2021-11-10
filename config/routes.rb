@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  get '/signup' => 'users#new'
+  #post 'signup' => 'users#create' (use built in submission instead)
+  # custom routes above line
   resources :assignments
   resources :student_periods
   resources :students
