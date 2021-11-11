@@ -11,15 +11,24 @@ Rails.application.routes.draw do
 
   #logout
   delete '/logout' => 'sessions#destroy'
+
+
+  get '/periods' => 'periods#index'
+  get '/periods/new' => 'periods#new'
+  post '/periods/new' => 'periods#create'
   # custom routes above line
-  resources :assignments
-  resources :student_periods
-  resources :students
+  resources :users do
+    resources :periods, shallow: true
+  end
   resources :periods do
     resources :students
+    resource :assignments
   end
-  resources :users do
+  resources :students do
     resources :periods
+    resource :assignments
   end
+  resources :assignments
+  resources :student_periods
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
