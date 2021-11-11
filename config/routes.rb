@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  #inital page seen
+  # inital page seen
   root 'sessions#home'
-  #sign_up 
+  # sign_up 
   get '/signup' => 'users#new'
   post 'signup' => 'users#create'
 
-  #login
+  # login
   get '/login' => 'sessions#new'
   post 'login' => 'sessions#create'
 
-  #logout
+  # logout
   delete '/logout' => 'sessions#destroy'
 
 

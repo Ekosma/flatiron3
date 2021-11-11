@@ -2,7 +2,7 @@ class PeriodsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def new
-
+    @period = Period.new
   end
 
   def index
@@ -11,9 +11,9 @@ class PeriodsController < ApplicationController
   end
 
   def create
-    @period = Period.new(period_params)
+    @period = current_user.periods.build(period_params)
     if @period.save
-      redirect_to user_path
+      redirect_to periods_path
     else
       render :new
     end
@@ -30,7 +30,7 @@ class PeriodsController < ApplicationController
   private
 
   def period_params
-    #params.require(:period).permit(:period_name, :user_id)
-    params.permit(:period_name, :user_id)
+    params.require(:period).permit(:period_name, :user_id)
+    #params.permit(:period_name, :user_id)
   end
 end
