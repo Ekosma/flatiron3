@@ -19,7 +19,6 @@
       <% else%>
       <%= link_to "Add Class", new_period_path%>
       <%= link_to "All Classes", periods_path %>
-      <%= link_to "Edit Classes", edit_period_path(:id)%> 
       <%= link_to "My Classes", user_periods_path(current_user) %>  
       <%= link_to "Home", user_path(current_user)%> 
       <%= link_to "Logout", logout_path, method:"delete"%>

@@ -1,5 +1,5 @@
 <h1>period.index.erb</h1>
 
 <% @periods.each do |p|%>
-<li><%= link_to "#{p.period_name}", periods_path(p) %></li>
+<li><%= link_to "#{p.period_name}", period_path(p) %></li>
 <%end%>
