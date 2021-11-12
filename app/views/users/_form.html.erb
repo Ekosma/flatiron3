@@ -1,14 +1,16 @@
-<%= form_for(@user, url: '/signup') do |f|%>
+<div>
+  <%= form_for(@user, url: '/signup') do |f|%>
 
-  <%= f.label :username%>
-  <%= f.text_field :username, required:true%>
+    <%= f.label :username%>
+    <%= f.text_field :username, required:true%>
 
-  <%= f.label :email%>
-  <%= f.email_field :email, required:true%> 
+    <%= f.label :email%>
+    <%= f.email_field :email, required:true%> 
 
-  <%= f.label :password%>
-  <%= f.password_field :password, required:true%>
+    <%= f.label :password%>
+    <%= f.password_field :password, required:true%>
 
-  <%= f.submit "Submit"%>
+    <%= f.submit "Submit"%>
 
-<%end%>
+  <%end%>
+</div>

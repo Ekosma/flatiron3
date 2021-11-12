@@ -11,18 +11,12 @@
   </head>
 
   <body>
-    <%= yield %>
-    <div>
-      <% if current_user.nil?%>
-      <%= link_to "Sign Up" , signup_path%>
-      <%= link_to "Log In" , login_path%>
-      <% else%>
-      <%= link_to "Add Class", new_period_path%>
-      <%= link_to "All Classes", periods_path %>
-      <%= link_to "My Classes", user_periods_path(current_user) %>  
-      <%= link_to "Home", user_path(current_user)%> 
-      <%= link_to "Logout", logout_path, method:"delete"%>
-      <%end%>
+      <div>
+
+      <%= render "layouts/navbar"%>
+
+      <%= yield %>
+
     </div>
   </body>
 </html>
