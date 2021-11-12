@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:user][:username])
     if @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to period_path(@user)
+      redirect_to periods_path(@user)
     else
       flash[:message] = "Incorrect login, please try again"
       redirect_to 'sessions/new'

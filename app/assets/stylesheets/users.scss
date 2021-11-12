@@ -3,7 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 li {
-  display: inline-block;
+  text-align: center;
+  padding: 5px;
+  display: grid;
   margin-left: 50px;
-  color: blue;
+}
+
+h1 {
+  text-align: center;
 }
