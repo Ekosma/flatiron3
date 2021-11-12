@@ -16,12 +16,15 @@ Rails.application.routes.draw do
   get '/periods' => 'periods#index'
   get '/periods/new' => 'periods#new'
   post '/periods/new' => 'periods#create'
+  get 'period/id/edit' => 'periods#edit'
+  patch 'period/id/edit' => 'periods#update'
+
   # custom routes above line
   resources :users do
     resources :periods, shallow: true
   end
   resources :periods do
-    resources :students
+    resources :students, shallow: true
     resource :assignments
   end
   resources :students do

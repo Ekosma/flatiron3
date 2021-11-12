@@ -20,6 +20,18 @@ class PeriodsController < ApplicationController
   end
 
   def edit
+    @period = Period.find_by_id(params[:id])
+    #redirect_to periods_path if !@period || @period.user != current_user
+  end
+
+  def update
+    @period = Period.find_by(id: params[:id])
+    redirect_to periods_path if !@period || @period.user != current_user
+    if @period.update(period_params)
+      redirect_to period_path(@period)
+    else
+      render :edit
+    end
   end
 
   def show
