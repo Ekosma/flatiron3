@@ -8,9 +8,24 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user_id
-      redirect_to user_path(@user)
+      redirect_to period_path(@user)
     else
       render :new
+    end
+  end
+
+  def edit
+    @user= User.find_by_id(params[:id])
+    #redirect_to users_path if !@user
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    redirect_to user_path if !@user
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
     end
   end
 

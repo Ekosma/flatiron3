@@ -7,7 +7,8 @@ class PeriodsController < ApplicationController
 
   def index
     #@periods = Period.find_by("id = ?", params[:id])
-    @periods = Period.all
+    #@periods = Period.all
+    @periods = current_user.periods.all
   end
 
   def create
