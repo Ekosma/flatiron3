@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   # logout
   delete '/logout' => 'sessions#destroy'
 
-
   get '/periods' => 'periods#index'
   get '/periods/new' => 'periods#new'
   post '/periods/new' => 'periods#create'

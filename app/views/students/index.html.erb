@@ -1,1 +1,5 @@
 student.html.erb
+
+  <% @students.each do |s|%>
+  <li><%= link_to "#{s.student_name}", students_path(s) %></li>
+  <%end%>
