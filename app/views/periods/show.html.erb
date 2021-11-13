@@ -1,7 +1,7 @@
 <h1><%= @period.period_name%></h1>
 
 <%if @students.blank?%>
-<% render 'form'%>
+  <% render 'form'%>
   <%else%>
   <% @students.each do |s|%>
   <li><%= link_to "#{s.student_name}", students_path(s) %></li>
@@ -10,6 +10,6 @@
 
 
 
-<%= link_to "Add Student", new_student_path%>
+
 <%= link_to "Edit", edit_period_path(@period)%>
 <%= link_to "Delete", @period, method: :delete, data: { confirm: "Really?" } %>

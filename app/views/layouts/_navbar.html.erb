@@ -10,7 +10,9 @@
         <% else%>
       
         <li><%= link_to "Add Class", new_period_path%></li>
-        <li><%= link_to "Classes", user_periods_path(current_user) %></li>  
+        <li><%= link_to "Add Student", new_student_path%></li>
+        <li><%= link_to "Classes", user_periods_path(current_user) %></li> 
+        <li><%= link_to "Students", students_path(current_user) %></li>  
         <li><%= link_to "Account", user_path(current_user)%> </li>
         <li><%= link_to "Logout", logout_path, method:"delete"%></li>
         <%end%>
