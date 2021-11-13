@@ -10,10 +10,11 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = current_user.students.build(student_params)
+    @period = Period.find_by_id(params[:id])
+    @student = @period.students.build(student_params)
     if @student.save
-      redirect_to period_path
-    else 
+      redirect_to students_path
+    else
       render :new
     end
   end
