@@ -40,6 +40,11 @@ class PeriodsController < ApplicationController
     redirect_to periods_path if !@period
   end
 
+  def destroy
+    Period.find(params[:id]).destroy
+    redirect_to periods_path
+  end
+
   private
 
   def period_params

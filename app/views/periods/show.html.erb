@@ -4,4 +4,5 @@
 
 
 
-<%= link_to "Edit Class", edit_period_path(@period)%> 
+<%= link_to "Edit", edit_period_path(@period)%>
+<%= link_to "Delete", @period, method: :delete, data: { confirm: "Really?" } %>

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post '/periods/new' => 'periods#create'
   get '/periods/:id/edit' => 'periods#edit'
   post '/periods/:id/edit' => 'periods#update'
+  delete '/periods/:id' => 'periods#destroy'
 
   # custom routes above line    
   resources :users do
