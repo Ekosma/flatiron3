@@ -1,7 +1,15 @@
 class StudentPeriodsController < ApplicationController
 
+  def new
+    @student_period = StudentPeriod.new
+  end
+
+  def index
+    @students_periods = students_periods.all
+  end
+
   def create
-    @student_period = current_user.students_periods.build(student_period_params)
+    @student_period = StudentPeriod.new(student_period_params)
     if @student_period.save
       redirect_to periods_path
     else
@@ -13,4 +21,5 @@ class StudentPeriodsController < ApplicationController
 
   def student_period_params
     params.require(:student_period).permit(:period_id, :student_id)
+  end
 end

@@ -27,15 +27,21 @@ Rails.application.routes.draw do
   post '/students/:id/edit' => 'students#update'
   delete '/students/:id' => 'students#destroy'
 
+  get '/student_periods'  => 'student_periods#new'
+  post '/student_periods/new' => 'student_periods#create'
+  get '/student_periods/:id/edit' => 'student_periods#edit'
+  post '/student_periods/:id/edit' => 'student_periods#update'
+  delete '/student_periods/:id' => 'student_periods#destroy'
+
   # custom routes above line    
-  resources :users do
+  resources :users, only: [:index, :show, :new, :create, :edit, :update] do
     resources :periods
   end
-  resources :periods do
+  resources :periods, only: [:index, :show, :new, :create, :edit, :update] do
     resources :students
     resource :assignments
   end
-  resources :students do
+  resources :students, only: [:index, :show, :new, :create, :edit, :update] do
     resources :periods
     resource :assignments
   end

@@ -36,7 +36,13 @@ class PeriodsController < ApplicationController
   end
 
   def show
+    @student = []
+    @period_id = params[:id]
     @period = Period.find_by_id(params[:id])
+    student_id = StudentPeriod.where("period_id = ?", @period_id) 
+    student_id.each do |student|
+      @student << Student.find_by(id: student.student_id)
+    end
     redirect_to periods_path if !@period
   end
 
@@ -51,4 +57,5 @@ class PeriodsController < ApplicationController
     params.require(:period).permit(:period_name, :user_id)
     #params.permit(:period_name, :user_id)
   end
+
 end
