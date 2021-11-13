@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # sign_up 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
+  patch '/signup' => 'users#update'
 
   # login
   get '/login' => 'sessions#new'
