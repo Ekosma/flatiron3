@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_133505) do
+ActiveRecord::Schema.define(version: 2021_11_14_185841) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "assignment_name"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_11_10_133505) do
   add_foreign_key "assignments", "periods"
   add_foreign_key "assignments", "students"
   add_foreign_key "periods", "users"
-  add_foreign_key "student_periods", "periods"
-  add_foreign_key "student_periods", "students"
+  add_foreign_key "student_periods", "periods", on_delete: :cascade
+  add_foreign_key "student_periods", "students", on_delete: :cascade
   add_foreign_key "students", "users"
 end
