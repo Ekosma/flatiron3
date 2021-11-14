@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   #get '/student_periods'  => 'student_periods#new' 
   post '/student_periods/new' => 'student_periods#create'
   #get '/student_periods/:id/edit' => 'student_periods#edit'
-  #post '/student_periods/:id/edit' => 'student_periods#update'
+  post '/student_periods/:id/edit' => 'student_periods#destroy'
   #delete '/student_periods/:id' => 'student_periods#destroy'
 
   # custom routes above line

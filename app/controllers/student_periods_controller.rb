@@ -29,11 +29,24 @@ class StudentPeriodsController < ApplicationController
   end
 
   def edit
-
+    @student = []
+    @period_id = params[:id]
+    @period = current_user.periods.find_by_id(params[:id])
+    @student_in_period = StudentPeriod.where("period_id = ?", @period_id)
+    @student_in_period.each do |sip|
+      @student << Student.find_by_id(sip.student_id)
+    end
   end
 
-  def delete
-
+  def destroy
+    student_period_params[:student_id].each do |spp|
+      if spp != ""
+        selected_student_and_period_id = {:period_id => student_period_params[:period_id], :student_id => spp} 
+        @student_period_table_row = StudentPeriod.find_by(selected_student_and_period_id)
+        @student_period_table_row.destroy
+      end
+    end
+      redirect_to periods_path
   end
 
   private

@@ -1,6 +1,7 @@
-<h1><%= current_user.username%>'s Classes</h1>
+<h1><%= current_user.username.capitalize%>'s Classes</h1>
 
 <% @periods.each do |p|%>
 <li><%= link_to "#{p.period_name}", period_path(p) %></li>
 <%end%>
+
 
