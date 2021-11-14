@@ -17,23 +17,20 @@ class StudentPeriodsController < ApplicationController
     @student_period = StudentPeriod.new
   end
 
-  def index
-    @students_periods = students_periods.all
-  end
-
   def create
-    @student_period = StudentPeriod.new(student_period_params)
-    if @student_period.save
-      redirect_to periods_path
-    else
-      #flashmessage
-      redirect_to periods_path
+    student_period_params[:student_id].each do |spp|
+      selected_student_and_period_id = {:period_id => student_period_params[:period_id], :student_id => spp }
+      #@student_period = StudentPeriod.new(student_period_params[:period_id], spp) needs on hash not two to work
+      @student_period = StudentPeriod.new(selected_student_and_period_id)
+      @student_period.save
     end
+      redirect_to periods_path
   end
 
   private
 
   def student_period_params
-    params.require(:student_period).permit(:period_id, :student_id)
+    params.require(:student_period).permit(:period_id, :student_id => [])
   end
+
 end

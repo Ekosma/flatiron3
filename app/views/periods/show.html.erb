@@ -7,6 +7,6 @@
 
 
 
-<%= link_to "Add students", student_periods_path(@period.id) %>
+<%= link_to "Add students", new_student_period_path(@period) %>
 <%= link_to "Edit", edit_period_path(@period)%>
 <%= link_to "Delete", @period, method: :delete, data: { confirm: "Really?" } %>

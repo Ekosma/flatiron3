@@ -13,36 +13,38 @@ Rails.application.routes.draw do
   # logout
   delete '/logout' => 'sessions#destroy'
 
-  get '/periods' => 'periods#index'
-  get '/periods/new' => 'periods#new'
+  #get '/periods' => 'periods#index'
+  #get '/periods/new' => 'periods#new'
   post '/periods/new' => 'periods#create'
-  get '/periods/:id/edit' => 'periods#edit'
+  #get '/periods/:id/edit' => 'periods#edit'
   post '/periods/:id/edit' => 'periods#update'
-  delete '/periods/:id' => 'periods#destroy'
+  #delete '/periods/:id' => 'periods#destroy'
 
-  get '/students' => 'students#index'
-  get '/students/new' => 'students#new'
+  #get '/students' => 'students#index'
+  #get '/students/new' => 'students#new'
   post '/students/new' => 'students#create'
-  get '/students/:id/edit' => 'students#edit'
+  #get '/students/:id/edit' => 'students#edit'
   post '/students/:id/edit' => 'students#update'
-  delete '/students/:id' => 'students#destroy'
+  #delete '/students/:id' => 'students#destroy'
 
-  get '/student_periods'  => 'student_periods#new' 
+  #get '/periods/:id/student_periods/new' => 'student_periods#new'
+
+
+  #get '/student_periods'  => 'student_periods#new' 
   post '/student_periods/new' => 'student_periods#create'
-  get '/student_periods/:id/edit' => 'student_periods#edit'
-  post '/student_periods/:id/edit' => 'student_periods#update'
-  delete '/student_periods/:id' => 'student_periods#destroy'
+  #get '/student_periods/:id/edit' => 'student_periods#edit'
+  #post '/student_periods/:id/edit' => 'student_periods#update'
+  #delete '/student_periods/:id' => 'student_periods#destroy'
 
-  # custom routes above line    
-  resources :users, only: [:index, :show, :new, :create, :edit, :update] do
+  # custom routes above line
+  resources :users do
     resources :periods
   end
-  resources :periods, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :periods do
     resources :students
-    resource :assignments
+    resources :student_periods
   end
-  resources :students, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :periods
+  resources :students do
     resource :assignments
   end
   resources :assignments

@@ -1,12 +1,13 @@
 
+
 <%= form_for :student_period do |f|%>
 
-  <% f.label :period_id %>
-  <% f.text_field :period_id, required:true, value: @period_id %>
+  <%= f.label :period %>
+ <%= f.select :period_id, options_from_collection_for_select(current_user.periods.all, :id, :period_name, @period_id)%> 
 
-    <%= f.label :student_id, "Select Students" %>
-    <%= f.select :student_id, options_for_select(@student)%>
+  <%= f.label :student_id, "Select Students" %>
+  <%= f.select :student_id, options_from_collection_for_select(@student, :id, :student_name), {}, {:multiple => true}%>
   
   <%= f.submit "Submit"%>
-
-  <%end%>
+ 
+<%end%>
