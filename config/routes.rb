@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   post '/students/:id/edit' => 'students#update'
   delete '/students/:id' => 'students#destroy'
 
-  get '/student_periods'  => 'student_periods#new'
+  get '/student_periods'  => 'student_periods#new' 
   post '/student_periods/new' => 'student_periods#create'
   get '/student_periods/:id/edit' => 'student_periods#edit'
   post '/student_periods/:id/edit' => 'student_periods#update'

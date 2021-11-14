@@ -1,12 +1,14 @@
 
 <%= form_for :student_period do |f|%>
 
-  <%= f.label :period_id%>
-  <%= f.text_field :period_id, required:true%>
+  <% f.label :period_id %>
+  <% f.text_field :period_id, required:true, value: @period_id %>
 
-    <%= f.label :student_id%>
-  <%= f.text_field :student_id, required:true%>
-
+  <% @student.each do |s| %>
+    <%= f.label :student_id, s.student_name %>
+    <%= f.check_box :student_id %>
+  <%end%>
+  
   <%= f.submit "Submit"%>
 
   <%end%>

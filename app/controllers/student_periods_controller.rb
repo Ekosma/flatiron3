@@ -1,6 +1,19 @@
 class StudentPeriodsController < ApplicationController
 
   def new
+    @student = []
+    @student_ids = []
+    @period_id = params[:format]
+    @student_in_period = StudentPeriod.where("period_id = ?", @period_id)
+    @student_in_period.each do |sip|
+      @student_ids << sip.student_id
+    end
+    Student.all.each do |student|
+      if  !@student_ids.include?(student.id) && current_user.id == student.user_id
+        @student << student
+      end
+    end
+    #@student = @students
     @student_period = StudentPeriod.new
   end
 
@@ -13,7 +26,8 @@ class StudentPeriodsController < ApplicationController
     if @student_period.save
       redirect_to periods_path
     else
-      render :new
+      #flashmessage
+      redirect_to periods_path
     end
   end
 
