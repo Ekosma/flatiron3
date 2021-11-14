@@ -4,6 +4,7 @@ class StudentPeriodsController < ApplicationController
     @student = []
     @student_ids = []
     @period_id = params[:format]
+    @period = current_user.periods.find_by_id(params[:format])
     @student_in_period = StudentPeriod.where("period_id = ?", @period_id)
     @student_in_period.each do |sip|
       @student_ids << sip.student_id
@@ -20,11 +21,19 @@ class StudentPeriodsController < ApplicationController
   def create
     student_period_params[:student_id].each do |spp|
       selected_student_and_period_id = {:period_id => student_period_params[:period_id], :student_id => spp }
-      #@student_period = StudentPeriod.new(student_period_params[:period_id], spp) needs on hash not two to work
+      #@student_period = StudentPeriod.new(student_period_params[:period_id], spp) needs one hash not two to work
       @student_period = StudentPeriod.new(selected_student_and_period_id)
       @student_period.save
     end
       redirect_to periods_path
+  end
+
+  def edit
+
+  end
+
+  def delete
+
   end
 
   private
