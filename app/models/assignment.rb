@@ -1,4 +1,4 @@
 class Assignment < ApplicationRecord
-  belongs_to :student
+  has_many :students
   belongs_to :period
 end
