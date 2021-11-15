@@ -5,8 +5,4 @@
   <li><%= link_to "#{s.student_name}", student_path(s)%></li>
   <%end%>
 
-
-<%= link_to "Add students", new_student_period_path(@period) %>
-<%= link_to "Edit students", edit_student_period_path(@period) %>
-<%= link_to "Edit", edit_period_path(@period)%>
-<%= link_to "Delete", @period, method: :delete, data: { confirm: "Really?" } %>
+<%= render 'periods/_bottom_nav_bar'%>
