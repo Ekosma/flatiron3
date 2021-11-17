@@ -1,1 +1,15 @@
 Assignments.show.html.erb
+
+<table>
+    <tr>
+    <th>Student Name</th>
+    <% @assignment.each do |s|%>
+    <th><%= "#{s.assignment_name}"%></th>
+    <%end%>
+    </tr>
+
+    <% @student.each do |s|%>
+    <tr><td><%= "#{s.student_name}"%></td></tr>
+    <%end%>
+
+</table>

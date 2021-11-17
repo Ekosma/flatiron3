@@ -1,3 +1,17 @@
 Assignments.new.html.erb
 
-<%= render 'form' %>
+<%= form_for :assignment do |f|%>
+
+  <%= f.label :assignment_name%>
+  <%= f.text_field :assignment_name, required:true%>
+
+  <%= f.label :student_id, "Select Students" %>
+  <%= f.select :student_id, options_from_collection_for_select(@student, :id, :student_name), {}, {:multiple => true}%>
+
+  <%= f.hidden_field :grade, :value => nil%>
+
+  <%= f.hidden_field :period_id, :value => @period_id %>
+
+  <%= f.submit "Submit"%>
+
+  <%end%>

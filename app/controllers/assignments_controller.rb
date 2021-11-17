@@ -1,5 +1,4 @@
 class AssignmentsController < ApplicationController
-  #before_save :normalize_blank_values
 
   def new
     @student = []
@@ -36,6 +35,27 @@ class AssignmentsController < ApplicationController
 
   def update
 
+  end
+
+  def show
+    @student = []
+    @student_ids = []
+    @period_id = params[:id]
+    @period = current_user.periods.find_by_id(params[:id])
+    @student_in_period = StudentPeriod.where("period_id = ?", @period_id)
+    @student_in_period.each do |sip|
+      @student_ids << sip.student_id
+    end
+    Student.all.each do |student|
+      if @student_ids.include?(student.id) && current_user.id == student.user_id
+        @student << student
+      end
+    end
+    @assignment = []
+    @period_assignments = Assignment.where("period_id = ?", @period_id)
+    @period_assignments.each do |pa|
+      @assignment << pa
+    end
   end
 
   def destroy
