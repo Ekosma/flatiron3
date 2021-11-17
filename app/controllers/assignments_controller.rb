@@ -11,7 +11,7 @@ class AssignmentsController < ApplicationController
       @student_ids << sip.student_id
     end
     Student.all.each do |student|
-      if  !@student_ids.include?(student.id) && current_user.id == student.user_id
+      if  @student_ids.include?(student.id) && current_user.id == student.user_id
         @student << student
       end
     end
@@ -20,9 +20,12 @@ class AssignmentsController < ApplicationController
 
   def create
     assignment_params[:student_id].each do |ap|
-      selected_params = {:assignment_name => assignment_params[:assignment_name], :grade => nil, :period_id => assignment_params[:period_id], :student_id => ap }
-      @assignment = Assignment.new(selected_params)
-      @assignment.save
+      if ap != ""
+        selected_params = { :assignment_name => assignment_params[:assignment_name], :grade => assignment_params[:grade],
+          :period_id => assignment_params[:period_id], :student_id => ap }
+        @assignment = Assignment.new(selected_params)
+        @assignment.save
+      end
     end
       redirect_to periods_path
   end

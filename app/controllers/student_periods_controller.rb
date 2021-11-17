@@ -20,7 +20,7 @@ class StudentPeriodsController < ApplicationController
 
   def create
     student_period_params[:student_id].each do |spp|
-      selected_student_and_period_id = {:period_id => student_period_params[:period_id], :student_id => spp }
+      selected_student_and_period_id = { :period_id => student_period_params[:period_id], :student_id => spp }
       #@student_period = StudentPeriod.new(student_period_params[:period_id], spp) needs one hash not two to work
       @student_period = StudentPeriod.new(selected_student_and_period_id)
       @student_period.save
