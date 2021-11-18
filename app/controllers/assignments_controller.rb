@@ -55,7 +55,10 @@ class AssignmentsController < ApplicationController
     @period_assignments = Assignment.where("period_id = ?", @period_id)
     @period_assignments.each do |pa|
       @assignment << pa
+      print(@assignment)
     end
+    
+
   end
 
   def destroy

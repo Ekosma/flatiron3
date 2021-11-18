@@ -12,4 +12,10 @@ Assignments.show.html.erb
     <tr><td><%= "#{s.student_name}"%></td></tr>
     <%end%>
 
+
+    <% @assignment.each do |s|%>
+    <tr><%= "#{s.grade}"%></tr>
+    <%end%>
+    
+
 </table>

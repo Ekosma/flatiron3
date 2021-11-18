@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     #redirect_to users_path if !@user
   end
 
-  def update
+  def update #I DONE GOOFED!!!!!!!!!
     @user = User.find_by_id(params[:id])
     if @user.update(user_params)
       session[:user_id] = @user.id

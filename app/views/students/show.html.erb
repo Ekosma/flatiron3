@@ -1,3 +1,11 @@
 students.show.html.erb
 
 <h1>It's all about <%=@student.student_name.capitalize%>!</h1> 
+
+  <% @assignments.each do |s|%>
+    <li><td><%= "#{s.assignment_name}"%></td></li>
+  <%end%>
+
+  <% @assignments.each do |s|%>
+    <li><td><%= "#{s.grade}"%></td></li>
+  <%end%>
