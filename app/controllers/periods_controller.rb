@@ -2,6 +2,7 @@ class PeriodsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def new
+    @period_id = params[:format]
     @period = Period.new
   end
 

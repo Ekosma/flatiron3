@@ -1,0 +1,10 @@
+<%= form_for :assignment do |f|%>
+
+  <%= f.label :assignment_name%>
+  <%= f.text_field :assignment_name, required:true %>
+
+  <%= f.hidden_field :period_id, :value => @period_id %>
+
+  <%= f.submit "Submit"%>
+
+<% end %>

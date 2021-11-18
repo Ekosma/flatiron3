@@ -14,32 +14,20 @@ Rails.application.routes.draw do
   # logout
   delete '/logout' => 'sessions#destroy'
 
-  #get '/periods' => 'periods#index'
-  #get '/periods/new' => 'periods#new'
   post '/periods/new' => 'periods#create'
-  #get '/periods/:id/edit' => 'periods#edit'
   post '/periods/:id/edit' => 'periods#update'
-  #delete '/periods/:id' => 'periods#destroy'
 
-  #get '/students' => 'students#index'
-  #get '/students/new' => 'students#new'
   post '/students/new' => 'students#create'
-  #get '/students/:id/edit' => 'students#edit'
   post '/students/:id/edit' => 'students#update'
-  #delete '/students/:id' => 'students#destroy'
-
-  #get '/periods/:id/student_periods/new' => 'student_periods#new'
-
-
-  #get '/student_periods'  => 'student_periods#new' 
+ 
   post '/student_periods/new' => 'student_periods#create'
-  #get '/student_periods/:id/edit' => 'student_periods#edit'
   post '/student_periods/:id/edit' => 'student_periods#destroy'
-  #delete '/student_periods/:id' => 'student_periods#destroy'
 
   post '/assignments/new' => 'assignments#create'
   post '/assignments/:id/edit' => 'assignments#edit'
   delete '/assignments/:id' => 'assignments#destroy'
+
+  
 
   # custom routes above line
   resources :users do
@@ -48,11 +36,13 @@ Rails.application.routes.draw do
   resources :periods do
     resources :students
     resources :student_periods
+    resources :assignments
   end
   resources :students do
-    resource :assignments
+    resource :grades
   end
   resources :assignments
+  resources :grades
   resources :student_periods
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

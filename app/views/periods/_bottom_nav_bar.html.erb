@@ -1,7 +1,7 @@
 <%= link_to "Add Assignment", new_assignment_path(@period)%>
 <%= link_to"View Assignments", assignment_path(@period)%>
-<%= link_to "Add Grade", edit_assignment_path(@period)%>
+<%= link_to "Add Grade", new_grade_path(@period)%>
 <%= link_to "Add students", new_student_period_path(@period) %>
-<%= link_to "Edit students", edit_student_period_path(@period) %>
+<%= link_to "Remove students", edit_student_period_path(@period) %>
 <%= link_to "Edit", edit_period_path(@period)%>
 <%= link_to "Delete", @period, method: :delete, data: { confirm: "Really?" } %>
