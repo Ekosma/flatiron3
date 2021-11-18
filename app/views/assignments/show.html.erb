@@ -1,1 +1,7 @@
 assignment.show.html.erb
+
+<h1><%= @period.period_name%></h1> 
+
+  <% @assignment.each do |s|%>
+    <li><td><%= "#{s.assignment_name}"%></td></li>
+  <%end%>
