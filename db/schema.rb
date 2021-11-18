@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_18_142343) do
+ActiveRecord::Schema.define(version: 2021_11_18_145645) do
+
+  create_table "assignments", force: :cascade do |t|
+    t.string "assignment_name"
+    t.integer "period_id", null: false
+    t.index ["period_id"], name: "index_assignments_on_period_id"
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.integer "grade"
+    t.integer "assignment_id", null: false
+    t.integer "student_id", null: false
+    t.index ["assignment_id"], name: "index_grades_on_assignment_id"
+    t.index ["student_id"], name: "index_grades_on_student_id"
+  end
 
   create_table "periods", force: :cascade do |t|
     t.string "period_name"
@@ -37,6 +51,9 @@ ActiveRecord::Schema.define(version: 2021_11_18_142343) do
     t.string "password_digest"
   end
 
+  add_foreign_key "assignments", "periods"
+  add_foreign_key "grades", "assignments"
+  add_foreign_key "grades", "students"
   add_foreign_key "periods", "users"
   add_foreign_key "student_periods", "periods", on_delete: :cascade
   add_foreign_key "student_periods", "students", on_delete: :cascade

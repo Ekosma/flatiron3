@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :grades
   # inital page seen
   root 'sessions#home'
   # sign_up 
