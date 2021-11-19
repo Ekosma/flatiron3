@@ -1,11 +1,17 @@
 <h1><%= @period.period_name%></h1>
 
-<h2> Students </h2>
-  <% @student.each do |s|%>
-  <li><%= link_to "#{s.student_name}", student_path(s)%></li>
+  <h2> Students </h2>
+  <% if @student.empty? == true%>
+    <h3>This class is empty</h3>
+  <%else%>
+    <% @student.each do |s|%>
+    <li><%= link_to "#{s.student_name}", student_path(s)%></li>
+    <%end%>
   <%end%>
+  
 
 <h2> Assignments </h2>
+
   <% @assignments.each do |s|%>
     <% if @period.id == s.period_id %>
       <li><%= link_to "#{s.assignment_name}", assignment_path(s)%></li>
@@ -13,4 +19,3 @@
   <%end%>
 <%= render "periods/bottom_nav_bar" %>
 
-<%= link_to"View Assignments", assignment_path(@period)%>

@@ -47,13 +47,15 @@ class AssignmentsController < ApplicationController
   end
 
   def show
-    @assignment = []
-    @period_id = params[:id]
-    @period = current_user.periods.find_by_id(params[:id])
-    @period_assignment = Assignment.where("period_id = ?", @period_id)
-    @period_assignment.each do |pa|
-      @assignment << pa
-    end
+    #@assignment = []
+    #@period_id = params[:id]
+    #@period = current_user.periods.find_by_id(params[:id])
+    #@period_assignment = Assignment.where("period_id = ?", @period_id)
+    #@period_assignment.each do |pa|
+      #@assignment << pa
+    #end
+    @assignment_id = params[:id]
+    @assignment = Assignment.find_by_id(params[:id])
   end
 
   private
