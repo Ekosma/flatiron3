@@ -44,6 +44,7 @@ class PeriodsController < ApplicationController
     student_id.each do |student|
       @student << Student.find_by(id: student.student_id)
     end
+    @assignments = current_user.assignments.all
     redirect_to periods_path if !@period
   end
 
