@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+  before_action :redirect_if_not_logged_in
 
   def new
     @period_id = params[:format]
@@ -19,7 +20,18 @@ class AssignmentsController < ApplicationController
   end
 
   def index
-
+    @period_ids = []
+    @periods = current_user.periods.all
+    #@periods.each do |p|
+      #hash = p.id
+      #@period_ids << hash
+    #end
+    #@assign_per_period = []
+    #@period_ids.each do |value|
+      #@assign_per_period << Assignment.where("period_id = ?", value)
+    #end
+    #print(@assign_per_period)
+    @assignments = current_user.assignments.all
   end
 
   def edit

@@ -1,2 +1,14 @@
 assignment.index.html.erb
 
+<h1>Assignments</h1>
+
+  <% @periods.each do |s|%>
+    <li><%= "#{s.period_name}"%> </li>
+        <% @assignments.each do |a|%>
+          <% if s.id == a.period_id %>
+          <li><td><%= link_to "#{a.assignment_name}", grade_path(s)%></td></li>
+          <%end%>
+      <%end%>
+  <%end%>
+  
+
