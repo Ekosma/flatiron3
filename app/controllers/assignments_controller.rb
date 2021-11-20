@@ -20,26 +20,22 @@ class AssignmentsController < ApplicationController
   end
 
   def index
-    @period_ids = []
     @periods = current_user.periods.all
-    #@periods.each do |p|
-      #hash = p.id
-      #@period_ids << hash
-    #end
-    #@assign_per_period = []
-    #@period_ids.each do |value|
-      #@assign_per_period << Assignment.where("period_id = ?", value)
-    #end
-    #print(@assign_per_period)
     @assignments = current_user.assignments.all
   end
 
   def edit
-
+    @assignment = Assignment.find_by_id(params[:id])
   end
 
   def update
-
+    @assignment = Assignment.find_by(id: params[:id])
+    redirect_to assignments_path if !@assignment || @assignment.user != current_user
+    if @assignment.update(assignment_params)
+      redirect_to assignment_path(@assignment)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -47,13 +43,6 @@ class AssignmentsController < ApplicationController
   end
 
   def show
-    #@assignment = []
-    #@period_id = params[:id]
-    #@period = current_user.periods.find_by_id(params[:id])
-    #@period_assignment = Assignment.where("period_id = ?", @period_id)
-    #@period_assignment.each do |pa|
-      #@assignment << pa
-    #end
     @assignment_id = params[:id]
     @assignment = Assignment.find_by_id(params[:id])
   end
