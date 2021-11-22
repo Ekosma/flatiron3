@@ -8,14 +8,43 @@
         <li><%= link_to "Sign Up" , signup_path%></li>
         <li><%= link_to "Log In" , login_path%></li>
         <% else%>
-      
-        <li><%= link_to "Add Class", new_period_path%></li>
-        <li><%= link_to "Add Student", new_student_path%></li>
-        <li><%= link_to "Classes", user_periods_path(current_user) %></li> 
-        <li><%= link_to "Students", students_path(current_user) %></li>  
-        <li><%= link_to "Assignments", assignments_path(current_user) %></li>
-        <li><%= link_to "Account", user_path(current_user)%> </li>
-        <li><%= link_to "Logout", logout_path, method:"delete"%></li>
+
+
+        <div class="dropdown">
+          <button class="dropbtn">Classes</button>
+            <div class="dropdown-content">
+              <%= link_to "All Classes", user_periods_path(current_user) %>
+              <%= link_to "Create Class", new_period_path%>
+            </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Students</button>
+            <div class="dropdown-content">
+              <%= link_to "Students", students_path(current_user) %> 
+              <%= link_to "Create Student", new_student_path%>
+            </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">Assignments</button>
+            <div class="dropdown-content">
+            <%= link_to "Assignments", assignments_path(current_user) %>
+          </div>
+        </div>
+
+        
+        <div class="dropdown">
+          <button class="dropbtn">Account</button>
+            <div class="dropdown-content">
+            <%= link_to "Account Information", user_path(current_user)%> 
+            <%= link_to "Logout", logout_path, method:"delete"%>
+          </div>
+        </div>
+        
+        
+        
+        
         <%end%>
       </ul>
     </nav>

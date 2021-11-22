@@ -51,8 +51,6 @@ class PeriodsController < ApplicationController
         @period_assign << s
       end
     end
-    print(@period_assign)
-    print("HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA")
     redirect_to periods_path if !@period
   end
 

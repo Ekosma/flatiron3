@@ -26,11 +26,12 @@ class AssignmentsController < ApplicationController
 
   def edit
     @assignment = Assignment.find_by_id(params[:id])
+    @period_id = @assignment.period_id
   end
 
   def update
     @assignment = Assignment.find_by(id: params[:id])
-    redirect_to assignments_path if !@assignment || @assignment.user != current_user
+    redirect_to assignments_path if !@assignment
     if @assignment.update(assignment_params)
       redirect_to assignment_path(@assignment)
     else
@@ -39,7 +40,8 @@ class AssignmentsController < ApplicationController
   end
 
   def destroy
-
+    Assignment.find(params[:id]).destroy
+    redirect_to assignments_path
   end
 
   def show

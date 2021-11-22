@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post '/student_periods/:id/edit' => 'student_periods#destroy'
 
   post '/assignments/new' => 'assignments#create'
-  post '/assignments/:id/edit' => 'assignments#edit'
+  post '/assignments/:id/edit' => 'assignments#update'
   delete '/assignments/:id' => 'assignments#destroy'
 
   # custom routes above line

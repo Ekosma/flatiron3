@@ -4,3 +4,4 @@ assignment.show.html.erb
 
 
 <%= link_to "Edit Assignment", edit_assignment_path%>
+<%= link_to "Delete", @assignment, method: :delete, data: { confirm: "Really?" } %>

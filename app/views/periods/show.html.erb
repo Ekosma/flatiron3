@@ -1,5 +1,5 @@
 <h1><%= @period.period_name%></h1>
-
+<div class='student'>
   <h2> Students </h2>
   <% if @student.empty?%>
     <h3>This class is empty</h3>
@@ -8,10 +8,10 @@
     <li><%= link_to "#{s.student_name}", student_path(s)%></li>
     <%end%>
   <%end%>
+<div>
   
-
-<h2> Assignments </h2>
-
+<div >
+    <h2> Assignments </h2>
     <%if @period_assign.empty?%>
       <h3>No Assignments Created</h3>
     <%else%>
@@ -19,6 +19,6 @@
       <li><%= link_to "#{pa.assignment_name}", assignment_path(pa)%></li>
     <%end%>
   <%end%>
-
+</div>
 <%= render "periods/bottom_nav_bar" %>
 
