@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   post '/assignments/:id/edit' => 'assignments#update'
   delete '/assignments/:id' => 'assignments#destroy'
 
+  post '/grades/new' => 'grades#create'
+  post '/grades/:id/edit' => 'grades#update'
+  delete '/grades/:id' => 'grades#destroy'
   # custom routes above line
   resources :users do
     resources :periods
