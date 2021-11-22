@@ -22,7 +22,6 @@ class GradesController < ApplicationController
         @student << s
       end
     end
-    print(@student)
     @grade = Grade.new
   end
 

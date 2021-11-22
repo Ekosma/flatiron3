@@ -46,16 +46,25 @@ class AssignmentsController < ApplicationController
 
   def show
     @student = []
-    @student_ids = []
+    @student_id = []
+    @grades = []
     @assignment_id = params[:id]
     @assignment = Assignment.find_by_id(params[:id]) 
     @period_id = @assignment.period_id
     @student_in_period = StudentPeriod.where("period_id = ?", @assignment.period_id)
+    @assign_grade = Grade.where("assignment_id = ?", params[:id])
+    @assign_grade.each do |g|
+      @grades << g.student_id
+    end
+    print(@assign_grade)
+    print(@grades)
     @student_in_period.each do |sip|
-      @student_ids << sip.student_id
+      if @grades.include?(sip.student_id)
+        @student_id << sip.student_id
+      end
     end
     Student.all.each do |student|
-      if  @student_ids.include?(student.id) && current_user.id == student.user_id 
+      if  @student_id.include?(student.id) && current_user.id == student.user_id 
         @student << student
       end
     end
