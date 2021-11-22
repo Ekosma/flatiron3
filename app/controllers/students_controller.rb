@@ -22,11 +22,17 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find_by_id(params[:id])
     @student_id = @student.id
-    #@assignments = []
-    #@student_assignments = Assignment.where("student_id = ?", @student_id)
-      #@student_assignments.each do |sa|
-        #@assignments << sa
-      #end
+    @student_grades = Grade.where("student_id = ?", @student_id)
+    print(@student_grades)
+    @grades = []
+    @assignment_ids = []
+    @student_grades.each do |sa|
+      @grades << sa
+      @assignment_ids<< sa.assignment_id
+    end
+    print(@assignment_ids)
+    @assignments = Assignment.where("id = ?", @assignment_ids)
+    print(@assignments)
     redirect_to students_path if !@student
   end
 

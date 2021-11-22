@@ -45,8 +45,20 @@ class AssignmentsController < ApplicationController
   end
 
   def show
+    @student = []
+    @student_ids = []
     @assignment_id = params[:id]
-    @assignment = Assignment.find_by_id(params[:id])
+    @assignment = Assignment.find_by_id(params[:id]) 
+    @period_id = @assignment.period_id
+    @student_in_period = StudentPeriod.where("period_id = ?", @assignment.period_id)
+    @student_in_period.each do |sip|
+      @student_ids << sip.student_id
+    end
+    Student.all.each do |student|
+      if  @student_ids.include?(student.id) && current_user.id == student.user_id 
+        @student << student
+      end
+    end
   end
 
   private

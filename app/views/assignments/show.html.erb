@@ -2,6 +2,14 @@ assignment.show.html.erb
 
 <h1><%= @assignment.assignment_name%></h1> 
 
+  <% if @student.empty?%>
+    <h3>No Students Assigned</h3>
+  <%else%>
+    <% @student.each do |s|%>
+    <li><%= "#{s.student_name}"%></li>
+    <%end%>
+  <%end%>
+
 
 <%= link_to "Edit Assignment", edit_assignment_path%>
 <%= link_to "Delete", @assignment, method: :delete, data: { confirm: "Really?" } %>

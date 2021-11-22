@@ -3,19 +3,27 @@ class GradesController < ApplicationController
   
   def new
     @student = []
-    @student_ids = []
+    @student_id = []
+    @grades = []
     @assignment_id = params[:format]
     @assignment = Assignment.find_by_id(params[:format])
-    @period_id = @assignment.period_id
     @student_in_period = StudentPeriod.where("period_id = ?", @assignment.period_id)
-    @student_in_period.each do |sip|
-      @student_ids << sip.student_id
+    @assign_grade = Grade.where("assignment_id = ?", params[:format])
+    @assign_grade.each do |g|
+      @grades << g.student_id
     end
-    Student.all.each do |student|
-      if  @student_ids.include?(student.id) && current_user.id == student.user_id
-        @student << student
+    @student_in_period.each do |sip|
+      if @grades.exclude?(sip.student_id)
+        @student_id << sip.student_id
       end
     end
+    Student.all.each do |s|
+      if  @student_id.include?(s.id)
+        @student << s
+      end
+    end
+    print(@student)
+    @grade = Grade.new
   end
 
   def create
@@ -44,7 +52,5 @@ class GradesController < ApplicationController
   def grade_params
     params.require(:grade).permit(:grade, :assignment_id, :student_id => [])
   end
-
-
 
 end
