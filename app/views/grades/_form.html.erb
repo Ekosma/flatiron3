@@ -1,9 +1,11 @@
 <%= form_for :grade do |f|%>
 
-  <%= f.hidden_field :grade, :value => nil %>
-
   <%= f.label :student_id, "Select Students" %>
   <%= f.select :student_id, options_from_collection_for_select(@student, :id, :student_name), {}, {:multiple => true}%>
+
+    
+  <%= f.label :grade%>
+  <%= f.number_field :grade, required:true%>
 
   <%= f.hidden_field :assignment_id, :value => @assignment_id %>
 

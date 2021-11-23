@@ -7,6 +7,11 @@ assignment.show.html.erb
   <%else%>
     <% @student.each do |s|%>
     <li><%= "#{s.student_name}"%></li>
+      <% @assign_grade.each do |g|%>
+        <% if s.id == g.student_id%>
+          <li><%"#{g.grade}"%>
+        <%end%>
+      <%end%>
     <%end%>
   <%end%>
 
@@ -14,3 +19,4 @@ assignment.show.html.erb
 <%= link_to "Edit Assignment", edit_assignment_path%>
 <%= link_to "Delete", @assignment, method: :delete, data: { confirm: "Really?" } %>
 <%= link_to "Assign to Students", new_grade_path(@assignment)%>
+<%= link_to "Add Grades", edit_grade_path(@assignment)%>

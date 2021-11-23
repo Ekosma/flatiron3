@@ -35,7 +35,26 @@ class GradesController < ApplicationController
   end
 
   def edit
-
+    @student = []
+    @student_id = []
+    @grades = []
+    @assignment_id = params[:id]
+    @assignment = Assignment.find_by_id(params[:id])
+    @student_in_period = StudentPeriod.where("period_id = ?", @assignment.period_id)
+    @assign_grade = Grade.where("assignment_id = ?", params[:id])
+    @assign_grade.each do |g|
+      @grades << g.student_id
+    end
+    @student_in_period.each do |sip|
+      if @grades.include?(sip.student_id)
+        @student_id << sip.student_id
+      end
+    end
+    Student.all.each do |s|
+      if  @student_id.include?(s.id)
+        @student << s
+      end
+    end
   end
 
   def update

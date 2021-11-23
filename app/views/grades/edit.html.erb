@@ -1,3 +1,12 @@
 grades.edit.html.erb
 
-<%= render 'form' %>
+<%= form_for :grade do |f|%>
+  <%= @student.each do |s|%>
+    <%= f.label :student_id, s.student_name%>
+    <%= f.hidden_field :student_id, :value => s.id %>
+      <%= f.label :grade%>
+      <%= f.number_field :grade, min: 0, max: 100 , required:true%>
+      <%= f.hidden_field :assignment_id, :value => @assignment_id %>
+  <%end%>
+  <%= f.submit "Submit"%>
+<% end %>

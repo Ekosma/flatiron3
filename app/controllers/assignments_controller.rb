@@ -56,8 +56,6 @@ class AssignmentsController < ApplicationController
     @assign_grade.each do |g|
       @grades << g.student_id
     end
-    print(@assign_grade)
-    print(@grades)
     @student_in_period.each do |sip|
       if @grades.include?(sip.student_id)
         @student_id << sip.student_id
