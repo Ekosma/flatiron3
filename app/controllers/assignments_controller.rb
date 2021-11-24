@@ -2,14 +2,15 @@ class AssignmentsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def new
-    @period_id = params[:format]
-    @period = current_user.periods.find_by_id(params[:format])
-    @assignment = Assignment.new(params[:id])
+    @period_id = params[:period_id]
+    @assignment = Assignment.new({:period_id => params[:period_id]})
+    print(params)
+    print("LOOOK AT MEEEEE")
   end
 
   def create
-    @period_id = params[:id]
-    @period = current_user.periods.find_by_id(params[:id])
+    @period_id = params[:period_id]
+    @period = current_user.periods.find_by_id(params[:period_id])
     @assignment = Assignment.new(assignment_params)
     print(@assignment)
     if @assignment.save

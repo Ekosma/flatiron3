@@ -23,11 +23,11 @@ Rails.application.routes.draw do
   post '/student_periods/new' => 'student_periods#create'
   post '/student_periods/:id/edit' => 'student_periods#destroy'
 
-  post '/assignments/new' => 'assignments#create'
   post '/assignments/:id/edit' => 'assignments#update'
+  post '/periods/:id/assignments/new' => 'assignments#create'
   delete '/assignments/:id' => 'assignments#destroy'
 
-  post '/grades/new' => 'grades#create'
+  post '/assignments/:id/grades/new' => 'grades#create'
   post '/grades/:id/edit' => 'grades#update'
   delete '/grades/:id' => 'grades#destroy'
   # custom routes above line
@@ -42,7 +42,9 @@ Rails.application.routes.draw do
   resources :students do
     resource :grades
   end
-  resources :assignments
+  resources :assignments do
+    resources :grades
+  end
   resources :grades
   resources :student_periods
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

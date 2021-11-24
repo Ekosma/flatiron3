@@ -5,10 +5,10 @@ class GradesController < ApplicationController
     @student = []
     @student_id = []
     @grades = []
-    @assignment_id = params[:format]
-    @assignment = Assignment.find_by_id(params[:format])
+    @assignment_id = params[:assignment_id]
+    @assignment = Assignment.find_by_id(params[:assignment_id])
     @student_in_period = StudentPeriod.where("period_id = ?", @assignment.period_id)
-    @assign_grade = Grade.where("assignment_id = ?", params[:format])
+    @assign_grade = Grade.where("assignment_id = ?", params[:assignment_id])
     @assign_grade.each do |g|
       @grades << g.student_id
     end
