@@ -59,8 +59,6 @@ class GradesController < ApplicationController
 
   def update
     print(params)
-    #@grades = Grade.where("assignment_id = ?", params[:assignment_id])
-    #print(@grades)
     @students = params[:grade][:student_id]
     @grades_num = params[:grade][:grade]
     until @students.empty? && @grades_num.empty? do

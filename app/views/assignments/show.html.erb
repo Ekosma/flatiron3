@@ -9,7 +9,7 @@ assignment.show.html.erb
     <li><%= "#{s.student_name}"%></li>
       <% @assign_grade.each do |g|%>
         <% if s.id == g.student_id%>
-          <li><%"#{g.grade}"%>
+          <li><%="#{g.grade}"%></li>
         <%end%>
       <%end%>
     <%end%>
