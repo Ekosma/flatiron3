@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post '/students/new' => 'students#create'
   post '/students/:id/edit' => 'students#update'
  
-  post '/student_periods/new' => 'student_periods#create'
+  post '/periods/:id/student_periods/new' => 'student_periods#create'
   post '/student_periods/:id/edit' => 'student_periods#destroy'
 
   post '/assignments/:id/edit' => 'assignments#update'

@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   end
 
   def index
-    @students = current_user.students.all
+    @students = current_user.students.all.alpha
   end
 
   def create

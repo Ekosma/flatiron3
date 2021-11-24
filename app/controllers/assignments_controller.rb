@@ -62,7 +62,7 @@ class AssignmentsController < ApplicationController
         @student_id << sip.student_id
       end
     end
-    Student.all.each do |student|
+    Student.all.alpha.each do |student|
       if  @student_id.include?(student.id) && current_user.id == student.user_id 
         @student << student
       end

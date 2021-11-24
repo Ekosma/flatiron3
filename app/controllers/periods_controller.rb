@@ -38,11 +38,16 @@ class PeriodsController < ApplicationController
 
   def show
     @student = []
+    @help = []
     @period_id = params[:id]
     @period = Period.find_by_id(params[:id])
     student_id = StudentPeriod.where("period_id = ?", @period_id) 
     student_id.each do |student|
-      @student << Student.find_by(id: student.student_id)
+      @help << student.student_id
+    end
+    why = Student.where("id IN (?)", @help).alpha
+    why.each do |h|
+      @student << h
     end
     @assignments = current_user.assignments.all
     @period_assign = []
