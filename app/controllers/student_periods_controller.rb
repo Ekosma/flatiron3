@@ -4,8 +4,8 @@ class StudentPeriodsController < ApplicationController
   def new
     @student = []
     @student_ids = []
-    @period_id = params[:format]
-    @period = current_user.periods.find_by_id(params[:format])
+    @period_id = params[:period_id]
+    @period = current_user.periods.find_by_id(params[:period_id])
     @student_in_period = StudentPeriod.where("period_id = ?", @period_id)
     @student_in_period.each do |sip|
       @student_ids << sip.student_id
