@@ -58,7 +58,19 @@ class GradesController < ApplicationController
   end
 
   def update
-
+    print(params)
+    #@grades = Grade.where("assignment_id = ?", params[:assignment_id])
+    #print(@grades)
+    @students = params[:grade][:student_id]
+    @grades_num = params[:grade][:grade]
+    until @students.empty? && @grades_num.empty? do
+      s = @students.pop
+      g = @grades_num.pop
+      a = params[:id]
+      @grade = Grade.where("assignment_id = ?", a).where("student_id = ?", s)
+      @grade.update({:grade => g, :assignment_id => a, :student_id => s})
+    end
+    redirect_to assignment_path
   end
 
   def destroy
@@ -68,7 +80,6 @@ class GradesController < ApplicationController
   private
 
   def grade_params
-    params.require(:grade).permit(:grade, :assignment_id, :student_id => [])
+    params.require(:grade).permit(:grade , :assignment_id , :student_id => [])
   end
-
 end
