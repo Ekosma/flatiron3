@@ -1,7 +1,6 @@
+<h3>
 <%= form_for :student_period do |f|%>
-  
-  <!--<%= f.label :period %>
-  <%= f.select :period_id, options_from_collection_for_select(current_user.periods.all, :id, :period_name, @period_id)%>-->
+
 
   <%= f.hidden_field :period_id, :value => @period_id %>
 
@@ -11,3 +10,4 @@
   <%= f.submit "Submit"%>
  
 <%end%>
+</h3>
