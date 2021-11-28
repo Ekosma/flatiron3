@@ -10,7 +10,6 @@ class StudentsController < ApplicationController
   end
 
   def create
-    #@period = Period.find_by_id(params[:id])
     @student = current_user.students.build(student_params)
     if @student.save
       redirect_to students_path
@@ -20,6 +19,7 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @assignment_names = []
     @student = Student.find_by_id(params[:id])
     @student_id = @student.id
     @student_grades = Grade.where("student_id = ?", @student_id)
@@ -30,9 +30,7 @@ class StudentsController < ApplicationController
       @grades << sa
       @assignment_ids<< sa.assignment_id
     end
-    print(@assignment_ids)
-    @assignments = Assignment.where("id = ?", @assignment_ids)
-    print(@assignments)
+    @assignments = Assignment.where("id IN (?)", @assignment_ids)
     redirect_to students_path if !@student
   end
 
