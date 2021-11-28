@@ -21,7 +21,7 @@
         <div class="dropdown">
           <button class="dropbtn">Students</button>
             <div class="dropdown-content">
-              <%= link_to "Students", students_path %> 
+              <%= link_to "Students", students_path(current_user) %> 
               <%= link_to "Create Student", new_student_path%>
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="dropdown">
           <button class="dropbtn">Assignments</button>
             <div class="dropdown-content">
-            <%= link_to "Assignments", assignments_path %>
+            <%= link_to "Assignments", assignments_path(current_user) %>
           </div>
         </div>
 
@@ -37,7 +37,6 @@
         <div class="dropdown">
           <button class="dropbtn">Account</button>
             <div class="dropdown-content">
-            <%= link_to "Account Information", user_path(current_user)%> 
             <%= link_to "Logout", logout_path, method:"delete"%>
           </div>
         </div>

@@ -14,22 +14,7 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
-  def edit
-    @user = User.find_by_id(params[:id])
-    #redirect_to users_path if !@user
-  end
-
-  def update #I DONE GOOFED!!!!!!!!!
-    @user = User.find_by_id(params[:id])
-    if @user.update(user_params)
-      session[:user_id] = @user.id
-      redirect_to user_path(@user)
-    else
-      render :edit
-    end
-  end
-
+  
   def show
     redirect_if_not_logged_in
     @user = User.find_by_id(params[:id])
