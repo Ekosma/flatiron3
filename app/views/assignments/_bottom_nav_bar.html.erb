@@ -1,0 +1,6 @@
+<h3>
+  <%= link_to "Edit Assignment", edit_assignment_path%>
+  <%= link_to "Delete", @assignment, method: :delete, data: { confirm: "Really?" } %>
+  <%= link_to "Assign to Students", new_assignment_grade_path(@assignment)%>
+  <%= link_to "Add Grades", edit_grade_path(@assignment)%>  
+</h3>
