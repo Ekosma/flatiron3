@@ -1,6 +1,6 @@
 
   <% if @students == nil %>
-    <h3> <%= link_to "Please assign students before adding grades", period_path(@assignment.period_id) %> </h3>
+    <h3> <%= link_to "Please assign students to the assignment before adding grades", assignment_path(@assignment) %> </h3>
   <%else%>
     <%= form_for :grade do |f|%>
       <% @student.each do |s|%>

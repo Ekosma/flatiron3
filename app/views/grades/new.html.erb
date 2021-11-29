@@ -1,14 +1,17 @@
 
+  <% if @students == nil %>
+    <h3> <%= link_to "Please assign students to the class before adding grades", period_path(@assignment.period_id) %> </h3>
+  <%else%>
+    <%= form_for :grade do |f|%>
 
-<%= form_for :grade do |f|%>
+    <%= f.hidden_field :grade, :value => nil %>
 
-  <%= f.hidden_field :grade, :value => nil %>
+    <%= f.label :student_id, "Select Students" %>
+    <%= f.select :student_id, options_from_collection_for_select(@student, :id, :student_name), {}, {:multiple => true}%>
 
-  <%= f.label :student_id, "Select Students" %>
-  <%= f.select :student_id, options_from_collection_for_select(@student, :id, :student_name), {}, {:multiple => true}%>
+    <%= f.hidden_field :assignment_id, :value => @assignment_id %>
 
-  <%= f.hidden_field :assignment_id, :value => @assignment_id %>
-
-  <%= f.submit "Submit"%>
-
+    <%= f.submit "Submit"%>
+  
+  <%end%>
 <% end %>
