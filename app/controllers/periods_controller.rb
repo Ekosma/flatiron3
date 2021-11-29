@@ -12,7 +12,8 @@ class PeriodsController < ApplicationController
 
   def create
     @period = current_user.periods.build(period_params)
-    if @period.save
+    if @period.valid?
+      @period.save
       redirect_to periods_path
     else
       render :new
@@ -66,7 +67,6 @@ class PeriodsController < ApplicationController
 
   def period_params
     params.require(:period).permit(:period_name, :user_id)
-    #params.permit(:period_name, :user_id)
   end
 
 end

@@ -7,6 +7,8 @@
         <% @assignments.each do |a|%>
           <% if s.id == a.period_id %>
             <li><td><%= link_to "#{a.assignment_name}", assignment_path(a)%></td></li>
+          <%else%>
+          <h3>No Assignments</h3>
           <%end%>
       <%end%>
   <%end%>

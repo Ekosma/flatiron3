@@ -11,7 +11,8 @@ class StudentsController < ApplicationController
 
   def create
     @student = current_user.students.build(student_params)
-    if @student.save
+    if @student.valid?
+      @student.save
       redirect_to students_path
     else
       render :new

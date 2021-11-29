@@ -15,7 +15,6 @@ class StudentPeriodsController < ApplicationController
         @student << student
       end
     end
-    #@student = @students
     @student_period = StudentPeriod.new
   end
 
@@ -24,7 +23,9 @@ class StudentPeriodsController < ApplicationController
       selected_student_and_period_id = { :period_id => student_period_params[:period_id], :student_id => spp }
       #@student_period = StudentPeriod.new(student_period_params[:period_id], spp) needs one hash not two to work
       @student_period = StudentPeriod.new(selected_student_and_period_id)
-      @student_period.save
+      if @student_period.valid?
+        @student_period.save
+      end
     end
       redirect_to periods_path
   end

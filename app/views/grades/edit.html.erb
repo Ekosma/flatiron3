@@ -1,12 +1,15 @@
-grades.edit.html.erb
 
-<%= form_for :grade do |f|%>
-  <% @student.each do |s|%>
-    <%= f.label :student_id, s.student_name%>
-    <%= f.hidden_field :student_id, :value => s.id, multiple: true %>
-      <%= f.label :grade%>
-      <%= f.number_field :grade, min: 0, max: 100 , required:true, multiple: true%>
-      <%= f.hidden_field :assignment_id, :value => @assignment_id %>
-  <%end%>
-  <%= f.submit "Submit"%>
+  <% if @students == nil %>
+    <h3> <%= link_to "Please assign students before adding grades", period_path(@assignment.period_id) %> </h3>
+  <%else%>
+    <%= form_for :grade do |f|%>
+      <% @student.each do |s|%>
+        <%= f.label :student_id, s.student_name%>
+          <%= f.hidden_field :student_id, :value => s.id, multiple: true %>
+          <%= f.label :grade%>
+          <%= f.number_field :grade, min: 0, max: 100 , required:true, multiple: true%>
+          <%= f.hidden_field :assignment_id, :value => @assignment_id %>
+        <%end%>
+      <%end%>
+    <%= f.submit "Submit"%>
 <% end %>
