@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  #skip_before_filter :verify_authenticity_token, only => :create
 
  def destroy
   session.clear
@@ -12,9 +13,14 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to periods_path
     else
-      flash[:message] = "Incorrect login, please try again"
+      @error = "Incorrect login, please try again"
       redirect_to 'sessions/new'
     end
   end
-  
+
+  private 
+  #def 
+    #request.env["omniauth.auth"]
+  #end
 end
+  

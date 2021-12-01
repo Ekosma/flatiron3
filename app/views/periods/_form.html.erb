@@ -1,4 +1,5 @@
 <h3>
+<%= render partial: "layouts/errors", locals: {object: @period} %>
 <%= form_for :period do |f|%>
 
   <%= f.label :period_name%>

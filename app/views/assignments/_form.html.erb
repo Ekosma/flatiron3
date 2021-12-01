@@ -1,4 +1,5 @@
 <h3>
+<%= render partial: "layouts/errors", locals: {object: @assignment} %>
 <%= form_for :assignment do |f|%>
 
   <%= f.label :assignment_name%>

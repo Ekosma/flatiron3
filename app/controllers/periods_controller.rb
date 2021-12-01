@@ -1,13 +1,13 @@
 class PeriodsController < ApplicationController
   before_action :redirect_if_not_logged_in
+  
+  def index
+    @periods = current_user.periods.all
+  end
 
   def new
     @period_id = params[:format]
     @period = Period.new
-  end
-
-  def index
-    @periods = current_user.periods.all
   end
 
   def create
@@ -16,6 +16,7 @@ class PeriodsController < ApplicationController
       @period.save
       redirect_to periods_path
     else
+      @error = "Your period name needs to be more 3 letters"
       render :new
     end
   end

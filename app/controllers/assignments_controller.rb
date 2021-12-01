@@ -10,12 +10,11 @@ class AssignmentsController < ApplicationController
     @period_id = params[:period_id]
     @period = current_user.periods.find_by_id(params[:period_id])
     @assignment = Assignment.new(assignment_params)
-    print(@assignment)
     if @assignment.valid?
       @assignment.save
       redirect_to periods_path
     else
-      redirect_to :new
+      render :new
     end
   end
 
