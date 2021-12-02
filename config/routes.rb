@@ -7,9 +7,13 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   patch '/signup' => 'users#update'
 
+  #oauth-google login
+  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+
   # login
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  
 
   # logout
   delete '/logout' => 'sessions#destroy'

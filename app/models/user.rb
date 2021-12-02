@@ -5,4 +5,5 @@ class User < ApplicationRecord
   has_many :assignments, through: :periods
   validates :username, presence: {message: ""}, length: { minimum: 3 } 
   validates :email, uniqueness: { message: "is Invalid" } 
+
 end

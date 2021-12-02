@@ -7,6 +7,7 @@
         <% if current_user.nil?%>
         <li><%= link_to "Sign Up" , signup_path%></li>
         <li><%= link_to "Log In" , login_path%></li>
+        <li><%= link_to "Log In with Google", '/auth/google_oauth2', method: :post %></li>
         <% else%>
 
 
