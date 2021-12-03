@@ -2,9 +2,6 @@
 
 <h1>It's all about <%=@student.student_name.capitalize%>!</h1> 
 
-  <% if @assignment_ids.empty?%>
-    <h3>This student has no Assignments</h3>
-  <%else%>
     <% @assignments.each do |a|%>
     <li><b><%= "#{a.assignment_name}"%></b></li>
       <% @grades.each do |g|%>
@@ -13,7 +10,6 @@
         <%else%>
           <li>No grade issued yet.</li> 
         <%end%>
-      <%end%>
     <%end%>
   <%end%>
 
