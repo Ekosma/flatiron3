@@ -18,11 +18,13 @@ Rails.application.routes.draw do
   # logout
   delete '/logout' => 'sessions#destroy'
 
+  #post routes
   post '/periods/new' => 'periods#create'
   post '/periods/:id/edit' => 'periods#update'
 
   post '/students/new' => 'students#create'
   post '/students/:id/edit' => 'students#update'
+  delete '/student/:id' => 'students#destroy'
  
   post '/periods/:id/student_periods/new' => 'student_periods#create'
   post '/student_periods/:id/edit' => 'student_periods#destroy'

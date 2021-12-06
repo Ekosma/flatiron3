@@ -35,6 +35,11 @@ class StudentsController < ApplicationController
     redirect_to students_path if !@student
   end
 
+  def destroy
+    Student.find(params[:id]).destroy
+    redirect_to students_path
+  end
+  
   private
 
   def student_params

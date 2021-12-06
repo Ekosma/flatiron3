@@ -2,6 +2,9 @@
 
 <h1>Assignments</h1>
 
+<%if @assignments.empty?%>
+  <h2>No Assignemnts Created</h2>
+<%else%>
   <% @periods.each do |s|%>
     <li><%= "#{s.period_name}"%> </li>
         <% @assignments.each do |a|%>
@@ -10,5 +13,6 @@
           <%end%>
       <%end%>
   <%end%>
+<%end%>
   
 

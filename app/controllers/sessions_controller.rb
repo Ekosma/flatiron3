@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     end
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to periods_path
     else
       redirect_to '/'
     end

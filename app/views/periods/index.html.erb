@@ -1,7 +1,10 @@
 <h1><%= current_user.username.capitalize%>'s Classes</h1>
-
-<% @periods.each do |p|%>
-<li><%= link_to "#{p.period_name}", period_path(p) %></li>
+<% if @periods.empty? %>
+  <h2><%= link_to "Create your first Class", new_period_path%></h2>
+<%else%>
+  <% @periods.each do |p|%>
+    <li><%= link_to "#{p.period_name}", period_path(p) %></li>
+  <%end%>
 <%end%>
 
 

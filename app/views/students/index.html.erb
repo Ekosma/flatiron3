@@ -1,7 +1,9 @@
-
-
 <h1>All Students</h1>
 
+<% if @students.empty?%>
+  <h3><%= link_to "Create your first Student!", new_student_path%></h3>
+<% else%>
   <% @students.each do |s|%>
-  <li><%= link_to "#{s.student_name}", student_path(s) %></li>
+    <li><%= link_to "#{s.student_name}", student_path(s) %></li>
   <%end%>
+<%end%>
