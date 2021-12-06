@@ -2,7 +2,7 @@
 
 <h1><%= @period.period_name%> </h1>
 <% if @student.empty?%>
-  <h3>There are currently no students created. <br> <%= link_to "Create Student", new_student_path%></h3>
+  <h3> <%= link_to "Create Student", new_student_path%></h3>
 <%else%>
   <%=render 'form'%>
 <%end%>
