@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       redirect_to periods_path
     else
       @error = "Incorrect login, please try again"
-      redirect_to 'sessions/new'
+      redirect_to '/login'
     end
   end
 

@@ -1,0 +1,23 @@
+
+<h1>All User Classes</h1>
+
+  <% @users.each do |u|%>
+    <u><h2><li><%= "#{u.username.capitalize}"%> </li></h2></u>
+      <%@periods.each do |p| %>
+        <%if p.user_id == u.id%>
+          <b><li><%= "#{p.period_name}"%> </li></b>
+            <%@student_period.each do |sp|%>
+              <% @students.each do |s|%>
+                <% if s.id == sp.student_id && p.id == sp.period_id%>
+                  <li><%= "#{s.student_name}"%> </li>
+                <%end%>
+              <%end%>
+            <%end%> 
+        <%elsif p == nil%>
+        <h3>No Period</h3>         
+        <%end%>
+  <%end%>
+<%end%>
+
+
+      

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :grades
   # inital page seen
   root 'sessions#home'
   # sign_up 
@@ -18,8 +17,11 @@ Rails.application.routes.draw do
   # logout
   delete '/logout' => 'sessions#destroy'
 
+  #high grades
+  get '/high_grades' => 'grades#high_grades'
+
   #post routes
-  post '/periods/new' => 'periods#create'
+  #post '/periods/new' => 'periods#create'
   post '/periods/:id/edit' => 'periods#update'
 
   post '/students/new' => 'students#create'

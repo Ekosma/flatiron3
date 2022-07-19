@@ -24,6 +24,13 @@ class UsersController < ApplicationController
     redirect_to root_path if !@user
   end
 
+  #def index
+    #@users = User.all
+    #@periods = Period.all
+    #@students = Student.all
+    #@student_period = StudentPeriod.all
+  #end
+
   private
   
   def user_params

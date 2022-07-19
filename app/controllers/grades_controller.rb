@@ -71,8 +71,8 @@ class GradesController < ApplicationController
     redirect_to assignment_path
   end
 
-  def destroy
-
+  def high_grades
+    @grades = Grade.all
   end
 
   private

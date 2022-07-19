@@ -2,7 +2,7 @@
   <% if @student.empty? %>
     <h3> <%= link_to "No eligble students to assign", period_path(@assignment.period_id) %> </h3>
   <%else%>
-    <%= form_for :grade do |f|%>
+    <h3><%= form_for :grade do |f|%>
 
     <%= f.hidden_field :grade, :value => nil %>
 
@@ -11,7 +11,7 @@
 
     <%= f.hidden_field :assignment_id, :value => @assignment_id %>
 
-    <%= f.submit "Submit"%>
+    <%= f.submit "Submit"%></h3>
   
   <%end%>
 <%end%>
